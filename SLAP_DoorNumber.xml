@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SLAP_DoorNumber>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends><Mage_Customer/></depends>
+        </SLAP_DoorNumber>
+    </modules>
+    <global>
+        <fieldsets>
+            <sales_convert_quote_address>                           
+                <door_number>
+                    <to_order_address>*</to_order_address>
+                </door_number>
+            </sales_convert_quote_address>
+
+            <sales_convert_order_address>                                              
+                <door_number>
+                    <to_quote_address>*</to_quote_address>
+                </door_number>
+            </sales_convert_order_address>
+        </fieldsets>
+        <events>
+            <checkout_type_onepage_save_order>
+                <observers>
+                    <door_number_observer>
+                        <type>singleton</type>
+                        <class>singlepagecheckout/observer</class>
+                        <method>saveCustomData</method>
+                    </door_number_observer>
+                </observers>
+            </checkout_type_onepage_save_order>
+        </events>
+    </global>
+</config> 
